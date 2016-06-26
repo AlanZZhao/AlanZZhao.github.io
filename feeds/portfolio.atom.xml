@@ -22,7 +22,8 @@ high-quality iconic image and I could embed the image directly into Tableau usin
 of tinkering with the dimensions and having Tableau load the page at the image's HTML class div and voila, an on demand
 library of curated images.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Page Two - Visitation Growth Over 40 Years&lt;/em&gt;
-Parks have gotten much popular over the years, but it turned out that the growth varied tremendously between parks.&lt;/p&gt;
+Parks have gotten much popular since data started getting collected in 1979; almost doubling. It turned out that the
+growth is concentrated in a few parks in particular: Zion, Yosemite, and Grand Canyon.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Page Three - Seasonality of Park Attendance&lt;/em&gt;
 Each park has some sort of seasonality, here you can see what each particular park's looks like. Most follow a trend of
 high attendance in summer (nice weather plus summer break) but several parks diverge from this. Some are obvious; Death

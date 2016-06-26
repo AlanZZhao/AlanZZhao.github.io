@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Alan Zhao</title><link href="http://alanzzhao.com/" rel="alternate"></link><link href="http://alanzzhao.com/feeds/blog.atom.xml" rel="self"></link><id>http://alanzzhao.com/</id><updated>2016-06-25T11:27:00-04:00</updated><entry><title>Scraping and Cleaning National Park Visitor Data</title><link href="http://alanzzhao.com/scraping-and-cleaning-national-park-visitor-data.html" rel="alternate"></link><updated>2016-06-25T11:27:00-04:00</updated><author><name>Alan Zhao</name></author><id>tag:alanzzhao.com,2016-06-25:scraping-and-cleaning-national-park-visitor-data.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Motivation&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Understanding the data&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Selenium 101&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Pandas Aggregation&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Cleaning&lt;/strong&gt;&lt;/p&gt;
-</summary><category term="python"></category><category term="selenium"></category><category term="pandas"></category></entry></feed>
