@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>National Parks Historical Attendence - Alan Zhao</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/national-parks-historical-attendence.html">
+
+        <meta name="author" content="Alan Zhao" />
+        <meta name="keywords" content="data visualization,tableau,social sector" />
+        <meta name="description" content="A visualization breaking down the National Park Service&#39;s monthly visitation data from the past 40 years. I submitted this for the 2016 DoGoodData conference and it ended up winning." />
+
+        <meta property="og:site_name" content="Alan Zhao" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="National Parks Historical Attendence"/>
+        <meta property="og:url" content="/national-parks-historical-attendence.html"/>
+        <meta property="og:description" content="A visualization breaking down the National Park Service&#39;s monthly visitation data from the past 40 years. I submitted this for the 2016 DoGoodData conference and it ended up winning."/>
+        <meta property="article:published_time" content="2016-06-25" />
+            <meta property="article:section" content="Portfolio" />
+            <meta property="article:tag" content="data visualization" />
+            <meta property="article:tag" content="tableau" />
+            <meta property="article:tag" content="social sector" />
+            <meta property="article:author" content="Alan Zhao" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Alan Zhao            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/bio.html">
+                             About
+                          </a></li>
+                        <li >
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/portfolio.html">Portfolio</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/national-parks-historical-attendence.html"
+                       rel="bookmark"
+                       title="Permalink to National Parks Historical Attendence">
+                        National Parks Historical Attendence
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-06-25T11:13:00-04:00"> Sat 25 June 2016</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/data-visualization.html">data visualization</a>
+        /
+	<a href="/tag/tableau.html">tableau</a>
+        /
+	<a href="/tag/social-sector.html">social sector</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <embed>
+    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1020px; height: 1033px;'><noscript><a href='#'><img alt='National Parks through Forty Years of Attendance Data ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Na&#47;NationalParksAttendance&#47;Story&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='1020' height='800' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='NationalParksAttendance&#47;Story' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Na&#47;NationalParksAttendance&#47;Story&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showTabs' value='y' /></object></div>
+</embed><p><strong>About the Visualization</strong></p>
+<p>I've been a huge fan of national parks; one of my goals is to visit all 60+ of them (so far only halfway there). When I
+saw that Tableau was sponsorsing a visualization competition at the <a class="reference external" href="http://www.dogooddata.com/">2016 DoGoodData conference</a>, doing something with
+National Parks came to mind. The competition rules were broad: pick a social sector data set and tell a story with it.
+I did a bit of digging on the <a class="reference external" href="https://www.nps.gov/">National Park Service site</a> and saw they have a significant amount of data collected on
+a <a class="reference external" href="https://irma.nps.gov/Stats/">statistics subsection</a>.</p>
+<p>Unfortunately the data was separated by every park and in some report-style Excel spreadsheets. I used Python to scrape
+and clean the data, which you can read about <a class="reference external" href="http://alanzzhao.com/scraping-and-cleaning-national-park-visitor-data.html">here</a>. Once I built the full dataset, I started exploring the data. I was
+curious to see how attendance varied by park, how it grew over time, and how cyclical it was. My own experience visiting
+parks had given me intuition about these trends (ie Grand Canyon is really popular compared to Bryce Canyon, nobody
+visits Acadia in the Maine winter). These guiding questions each drove what went into each page.</p>
+<p><em>Page One - Attendance by Park</em>
+Building the map of NPS sites with their dot size determined by attendance was straightforward, but the visualization
+looked bland initially. I really wanted to get some kind of image of the parks - after all people love and recognize
+parks for their imagery, not their data points. I wasn't sure where I could find a data source of iconic photos for each
+park. I considered grabbing each park's wikipedia page, but found that their image quality varied and in some cases
+their page didn't have a photo yet. I ended up with a neat solution - use each park's official NPS site. Each site had a
+high-quality iconic image and I could embed the image directly into Tableau using Tableau's website embed feature. A bit
+of tinkering with the dimensions and having Tableau load the page at the image's HTML class div and voila, an on demand
+library of curated images.</p>
+<p><em>Page Two - Visitation Growth Over 40 Years</em>
+Parks have gotten much popular over the years, but it turned out that the growth varied tremendously between parks.</p>
+<p><em>Page Three - Seasonality of Park Attendance</em>
+Each park has some sort of seasonality, here you can see what each particular park's looks like. Most follow a trend of
+high attendance in summer (nice weather plus summer break) but several parks diverge from this. Some are obvious; Death
+Valley has almost no visitation in the summer. Others I'm not sure about; Great Smoky Mountains peaks again in the fall
+(maybe people checking out the autumn leaves?)</p>
+<p>I was pleased with what came out, but it still could use a bit of polish. Overall, the data collection and visualization
+building took a few days as a side project. Maybe I'll write an in-depth analysis of the data in a future blog post
+with a cleaner visualization.</p>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://linkedin.com/in/alanzzhao"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="http://stackoverflow.com/users/4967110/azhao?tab=profile"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+              </ul>
+            </li>
+
+
+
+
+
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Alan Zhao
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
