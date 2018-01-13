@@ -32,40 +32,58 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Apr 28, 2017</h4>
+        <div id="content">            <h4 class="date">Jun 25, 2016</h4>
 
             <article class="post">
                 <h2 class="title">
-                    <a href="http://alanzzhao.com/resources-and-inspiration-online.rst.html" rel="bookmark" title="Permanent Link to &quot;Resources and Inspiration Online&quot;">Resources and Inspiration Online</a>
+                    <a href="http://alanzzhao.com/national-parks-historical-attendence.html" rel="bookmark" title="Permanent Link to &quot;National Parks Historical Attendence&quot;">National Parks Historical Attendence</a>
                 </h2>
 
                 
                 
 
-                <p>As much of my learning has come from online resources as from Swarthmore or Yale classrooms. This is my attempt to share some of the absolute best blogs I've encountered. They run the gamut from very technical to purely practical. I'll periodically add to this as I find more.</p>
-<p><strong>Practical Business Python</strong></p>
-<p><a class="reference external" href="http://pbpython.com/">http://pbpython.com/</a></p>
-<p>The blog that started it all. Written by Chris Moffitt, an engineer by training but finance guy by trade, this blog is focused on showcasing how Python can take on business analysis usually left to Excel. Example topics include using pandas for pivot tables, and streamlining bulk generation of Excel reports. This blog inspired me to learn Python more deeply and provided numerous insights to automate work; at my old nonprofit we even used some posts as training material.
-Most importantly of all, a conversation with Chris himself led me to the idea of creating this blog.</p>
-<p><strong>Math union Programming</strong></p>
-<p><a class="reference external" href="https://jeremykun.com/">https://jeremykun.com/</a></p>
-<p>Written by Jeremy Kun, a math PhD turned software engineer, this blog covers a variety of mathematical topics (ie optimization, statistics, etc). What's interesting is that it is all done from a coder's perspective, focusing on intuition and programmatic examples rather than endless equations. His article on <a class="reference external" href="https://jeremykun.com/2017/06/05/formulating-the-support-vector-machine-optimization-problem/">support vector machines</a> is illustrative of this. Many of his posts has helped clarify several concepts from graduate level statistics courses I took at Yale.</p>
-<p><strong>Own your bits</strong></p>
-<p><a class="reference external" href="https://ownyourbits.com/">https://ownyourbits.com/</a></p>
-<p>Written by a hacker &quot;Narcho,&quot; this blog focuses on leveraging the raspberry pi as a home cloud storage solution. In other words, a DIY dropbox. A great DIY project that I did over the past winter break with a leftover portable hard drive.</p>
-<p>Narcho himself is an ardent advocate of understanding all technology used in daily life, particularly the hardware side. Obviously impractical to do for everything, but an admirable mindset to drive your curiosity.</p>
-<p><strong>John Myles White's Blog</strong></p>
-<p><a class="reference external" href="http://www.johnmyleswhite.com/">http://www.johnmyleswhite.com/</a></p>
-<p>Another blog attempting to explain statistical content in a colloquially understandable, but mathematically rigorous way. His optimization perspective on <a class="reference external" href="http://www.johnmyleswhite.com/notebook/2013/03/22/modes-medians-and-means-an-unifying-perspective/">mean, median, and mode</a> was eye-opening for me.</p>
+                <embed>
+    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1020px; height: 1033px;'><noscript><a href='#'><img alt='National Parks through Forty Years of Attendance Data ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Na&#47;NationalParksAttendance&#47;Story&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='1020' height='800' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='NationalParksAttendance&#47;Story' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Na&#47;NationalParksAttendance&#47;Story&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showTabs' value='y' /></object></div>
+</embed><p><strong>About the Visualization</strong></p>
+<p>I've been a huge fan of national parks; one of my goals is to visit all 60+ of them (so far only halfway there). When I
+saw that Tableau was sponsorsing a visualization competition at the <a class="reference external" href="http://www.dogooddata.com/">2016 DoGoodData conference</a>, doing something with
+National Parks came to mind. The competition rules were broad: pick a social sector data set and tell a story with it.
+I did a bit of digging on the <a class="reference external" href="https://www.nps.gov/">National Park Service site</a> and saw they have a significant amount of data collected on
+a <a class="reference external" href="https://irma.nps.gov/Stats/">statistics subsection</a>.</p>
+<p>Unfortunately the data was separated by every park and in some report-style Excel spreadsheets. I used Python to scrape, clean and aggregate the different pages data. Once I built the full dataset, I started exploring the data. I was
+curious to see how attendance varied by park, how it grew over time, and how cyclical it was. My own experience visiting
+parks had given me intuition about these trends (ie Grand Canyon is really popular compared to Bryce Canyon, nobody
+visits Acadia in the Maine winter). These guiding questions each drove what went into each page.</p>
+<p><em>Page One - Attendance by Park</em></p>
+<p>Building the map of NPS sites with their dot size determined by attendance was straightforward, but the visualization
+looked bland initially. I really wanted to get some kind of image of the parks - after all people love and recognize
+parks for their imagery, not their data points. I wasn't sure where I could find a data source of iconic photos for each
+park. I considered grabbing each park's wikipedia page, but found that their image quality varied and in some cases
+their page didn't have a photo yet. I ended up with a neat solution - use each park's official NPS site. Each site had a
+high-quality iconic image and I could embed the image directly into Tableau using Tableau's website embed feature. A bit
+of tinkering with the dimensions and having Tableau load the page at the image's HTML class div and voila, an on demand
+library of curated images.</p>
+<p><em>Page Two - Visitation Growth Over 40 Years</em></p>
+<p>Parks have gotten much popular since data started getting collected in 1979; almost doubling. It turned out that the
+growth is concentrated in a few parks in particular: Zion, Yosemite, and Grand Canyon.</p>
+<p><em>Page Three - Seasonality of Park Attendance</em></p>
+<p>Each park has some sort of seasonality, here you can see what each particular park's looks like. Most follow a trend of
+high attendance in summer (nice weather plus summer break) but several parks diverge from this. Some are obvious; Death
+Valley has almost no visitation in the summer. Others I'm not sure about; Great Smoky Mountains peaks again in the fall
+(maybe people checking out the autumn leaves?)</p>
+<p>I was pleased with what came out, but it still could use a bit of polish. Overall, the data collection and visualization
+building took a few days as a side project. Maybe I'll write an in-depth analysis of the data in a future blog post
+with a cleaner visualization.</p>
 
                 <div class="clear"></div>
 
                 <div class="info">
-                    <a href="http://alanzzhao.com/resources-and-inspiration-online.rst.html">posted at 09:34</a>
+                    <a href="http://alanzzhao.com/national-parks-historical-attendence.html">posted at 11:13</a>
                     &nbsp;&middot;&nbsp;<a href="http://alanzzhao.com/category/blog.html" rel="tag">Blog</a>
                     &nbsp;&middot;
-                    &nbsp;<a href="http://alanzzhao.com/tag/learning.html" class="tags">learning</a>
-                    &nbsp;<a href="http://alanzzhao.com/tag/python.html" class="tags">python</a>
+                    &nbsp;<a href="http://alanzzhao.com/tag/data-visualization.html" class="tags">data visualization</a>
+                    &nbsp;<a href="http://alanzzhao.com/tag/tableau.html" class="tags">tableau</a>
+                    &nbsp;<a href="http://alanzzhao.com/tag/social-sector.html" class="tags">social sector</a>
                 </div>
             </article>
 
@@ -73,8 +91,7 @@ Most importantly of all, a conversation with Chris himself led me to the idea of
                 <div class="pages">
 
                     <a href="http://alanzzhao.com/author/alan-zhao.html" class="prev_page">&larr;&nbsp;Future</a>
-                    <a href="http://alanzzhao.com/author/alan-zhao3.html" class="next_page">Past&nbsp;&rarr;</a>
-                    <span>Page 2 of 4</span>
+                    <span>Page 2 of 2</span>
                 </div>
 
         </div>
