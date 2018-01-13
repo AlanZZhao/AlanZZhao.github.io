@@ -4,7 +4,7 @@
 &lt;p&gt;A &lt;a href="https://github.com/getpelican/pelican"&gt;python blogging package&lt;/a&gt;. At a high level, this package enables you to write content in markdown files (.rst or .md) and then converts them to html files. These html files are what's pushed online, and serve up static content. It's far simpler to use for a project like this than something designed for enterprise like Django (which I tried first). Best of all, it seems to have gotten more popular over time as evidenced by the number of stars and forks on Github.&lt;/p&gt;
 &lt;p&gt;There's tons of guides out there already, but I used these two in conjunction with the &lt;a href="http://docs.getpelican.com/en/stable/quickstart.html"&gt;docs&lt;/a&gt; to get me started. &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://pbpython.com/pelican-config.html"&gt;PBPython&lt;/a&gt; - An excellent beginner's guide but sacrificing some technical depth for the sake of readability.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://chdoig.github.io/create-pelican-blog.html"&gt;Christine Doig's Guide&lt;/a&gt;
+&lt;p&gt;&lt;a href="http://chdoig.github.io/create-pelican-blog.html"&gt;Christine Doig's Guide&lt;/a&gt; - 
 Most thorough one I've found, but can be a little overwhelming until you familiarize yourself with the package's functionality.&lt;/p&gt;
 &lt;h4&gt;Blue Penguin Theme&lt;/h4&gt;
 &lt;p&gt;A &lt;a href="https://github.com/jody-frankowski/blue-penguin"&gt;beautiful minimalist theme&lt;/a&gt; designed by Jody Frankowski specifically for Pelican. It's barebones and actually removes much of pelican's features (ex: the social media bar) in favor of a very clean, modern look.&lt;/p&gt;
