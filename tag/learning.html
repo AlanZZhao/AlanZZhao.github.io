@@ -31,7 +31,61 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Jan 16, 2018</h4>
+        <div id="content">            <h4 class="date">Mar 02, 2018</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="http://alanzzhao.com/driven_data_competition.html" rel="bookmark" title="Permanent Link to &quot;Driven Data Poverty Prediction Challenge&quot;">Driven Data Poverty Prediction Challenge</a>
+                </h2>
+
+                
+                
+
+                <p>For the past month, I worked on a <a href="https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/97/">Driven Data Competition - Predicting Poverty</a> alongside <a href="https://www.linkedin.com/in/shadiekhubba/">Shadie Khubba (Yale Statistics MSc '18)</a>. This post is a detailing of our results (top 10% finish ~ 200 place of 2200 contestants, code, and learnings.</p>
+<h4>Motivation</h4>
+<p>Shadie and I had met in a Statistical Case Studies class that involved weekly hack session of solving an amorphous problem (e.g. predict New Haven housing from online data). We figured this Driven Data was our attempt to prove our chops in the real world and get more familiar with the Python data stack as opposed to academia's R. Plus the bragging rights and possible $ if we won.</p>
+<h4>The Problem</h4>
+<p>According to the page website, predicting poverty from survey data is a hard problem. We were given survey response data from 3 anonymized countries (A, B &amp; C), at both the household and individual level. Predictions were done at the household level, with each household having a 1:n relationship with individuals.</p>
+<p>Scoring was done with a mean log loss of the three, with our predictions being offered as probabilities between 0-1 for each household being classified as poor. A baseline naive score with uniform 0.5 probability would score 0.69.</p>
+<h4>Early Learnings</h4>
+<p>We spent our first two weeks in a traditional exploratory data setting; conducting exploratory data analysis and throwing some standard classifiers at the data. Exploratory data did not prove particularly useful since each column had its data scrambled. However, two challenging issues in the data. First, the classes were imbalanced in countries B and C, in particular poor households had 1:12 ratio with non-poor households. Second, the majority &gt;90% of predictors were categorical; with several having large sets of up to 80 possible values.</p>
+<p>We began throwing traditional methods at it: SVM, Logistic Regression, Boosting and building off the Random Forest model benchmark (scored at .55). Only one - Logistic Regression brought us into a competitive range of .27. At the time, scoreboard leaders were in the neighborhood of .15.</p>
+<p>Organizationally, we started with a GitHub repo that quickly turned into a mess. While we did organize our work with all data files/submission files saved, it quickly grew apparent that restructuring our code was inefficient. Shadie and I were working in our separate .py files, and often rewriting or re-running models locally ourselves. We didn't enough time planning a project structure early on; later I found out about the <a href="https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science">cookie-cutter data science project</a>, but it was too late to implement a new project structure.</p>
+<h4>Inherent Challenges</h4>
+<p>While we solved some minor problems with imbalanced classes (resampling) and missing values (imputation) but we really struggled with two major problems.</p>
+<h6>Categorical Variables</h6>
+<p>We needed a way to convert the categorical variables into numerical data such that scikit learn could actually use it as an input space. We started with one hot encoding (turning each possible value of a categorical predictor into a new 0/1 predictor), but realized it was blowing up dimensionality of the feature space. Our 50 categorical variables were turning into 500 and the curse of dimensionality was taking effect: additional useless variables being added in and getting some assignment of weight. We spent time early on trying to find the right heuristics to reduce the dimensionality.</p>
+<h6>Utilizing Individual Data</h6>
+<p>We began by using household data since it was provided. Incorporating summary statistics (e.g. mean, var, max, min) of predictions on individual data actually worsened prediction performance. Our hypothesis was that the individual predictions were offering a noisier version of what the household data already provided. Posts on the forum suggested that this was a common hurdle for the entire competitor field - many people were getting .17-.18 results just as we had by only using the household data.</p>
+<h4>CatBoost</h4>
+<p>We made a lucky breakthrough into the top 10% with a discovery of <a href="https://tech.yandex.com/catboost/">CatBoost</a>. CatBoost is a GBM variant made by Russian search giant Yandex, and it's killer feature is native support for categorical variables (hence the name categorical boosting = catboost). CatBoost is able to use statistical methods to selectively keep the most predictive values in each categorical column; saving much tedious cleaning on our end.</p>
+<p>Our first submission here brought us in the top 8% of submissions, showing that boosting is the way to go. This dramatic improvement came solely from avoiding the curse of dimensionality!</p>
+<p>However we couldn't significantly improve this data. We numerous feature engineering approaches for the individual data, but were stumped. We ended up in the 200th place of over 2200 competitors though, so not a bad showing for our first time out.</p>
+<h4>Lessons Learned</h4>
+<p>We learned a lot of neat technical tricks and tools (cookiecutter, catboost, scikit learn goodies like pipeline), but the real learnings are far more generally applicable.</p>
+<h6>Try Boosting First</h6>
+<p>We spent a lot of time tossing models that didn't pan out before we arrived at the correct one. From the post-competition discussion boards, we realized that many kaggle-vets immediately tried industry standard models (XGBoost, LightBoost, CatBoost) as their first model as a matter of habit. Readings online support this idea that boosting is the go-to black box solution.</p>
+<h6>Feature Engineering is Everything</h6>
+<p>We couldn't get beyond our initial gain from using CatBoost by adding in individual data, though we tried many many different approaches ranging from feature selection based off importance, predictions from individual data as features and more.</p>
+<p>The big question was how to build features from the individual data. One of the top 3 finishers posted his feature set, and it turned out to be ridiculously simply: counting positive and negative values, the individual id of individuals (suggesting some ordering to household), sum of continuous values, and a count of unqiue categorical values.</p>
+<h6>Build a Testing Harness</h6>
+<p>A major challenge here was that we underestimated the limitations imposed by the two submissions per day. We were lazy and would build a model and submit to validate our results. Only after many unfortunate submissions did we build out a suite of validation tools to rigorously test locally first. By the end of the first two weeks, we were running 3-fold cross validation, and eyeballing confusion matrices and predicted probability distributions. We started by treating the competition's submissions as a validation step, not as a final validation step.</p>
+<h6>Next Time</h6>
+<p>I'm optimistic that the next time we partake in a kaggle-style competition, we could place much higher if we had course corrected on these three things. Instead of scrambling to build out a testing harness with two weeks left, or furiously creating additional features in the final days, we could have comfortably spent 3 weeks feature engineering.</p>
+<h4>Real World Application &amp; Reflections</h4>
+<p>A final takeaway for both of us is that real data science life is not a kaggle-style competition. Online competitions push for a best solution; day-to-day work demands the "good enough" solution.</p>
+<p>I'd imagine that the World Bank, which sponsored this competition, would have been equally happy to know that household data and an out of the box GBM produce a solution within .03 of the winning one. Putting together the $15,000 prize and paying DrivenData to run the competition shows they likely didn't know this from the get go. Clearly, still some quick wins to be found in social sector data challenges.</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="http://alanzzhao.com/driven_data_competition.html">posted at 09:20</a>
+                    &nbsp;&middot;&nbsp;<a href="http://alanzzhao.com/category/blog.html" rel="tag">Blog</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="http://alanzzhao.com/tag/python.html" class="tags">python</a>
+                    &nbsp;<a href="http://alanzzhao.com/tag/learning.html" class="tags selected">learning</a>
+                    &nbsp;<a href="http://alanzzhao.com/tag/data-science.html" class="tags">data science</a>
+                </div>
+            </article>            <h4 class="date">Jan 16, 2018</h4>
 
             <article class="post">
                 <h2 class="title">
@@ -4846,41 +4900,6 @@ QgghpE9oUkEIIYQQQgjpE5pUEEIIIYQQQvqEJhWEEEIIIYSQPqFJBSGEEEIIIaRPaFJBCCGEEEII
                     &nbsp;<a href="http://alanzzhao.com/tag/pelican.html" class="tags">pelican</a>
                     &nbsp;<a href="http://alanzzhao.com/tag/python.html" class="tags">python</a>
                     &nbsp;<a href="http://alanzzhao.com/tag/learning.html" class="tags selected">learning</a>
-                </div>
-            </article>            <h4 class="date">Aug 28, 2017</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="http://alanzzhao.com/resources-and-inspiration-online.rst.html" rel="bookmark" title="Permanent Link to &quot;Resources and Inspiration Online&quot;">Resources and Inspiration Online</a>
-                </h2>
-
-                
-                
-
-                <p>As much of my learning has come from online resources as from Swarthmore or Yale classrooms. This is my attempt to share some of the absolute best blogs I've encountered. They run the gamut from very technical to purely practical. I'll periodically add to this as I find more.</p>
-<p><strong>Practical Business Python</strong></p>
-<p><a class="reference external" href="http://pbpython.com/">http://pbpython.com/</a></p>
-<p>The blog that started it all. Written by Chris Moffitt, an engineer by training but finance guy by trade, this blog is focused on showcasing how Python can take on business analysis usually left to Excel. Example topics include using pandas for pivot tables, and streamlining bulk generation of Excel reports. This blog inspired me to learn Python more deeply and provided numerous insights to automate work; at my old nonprofit we even used some posts as training material.
-Most importantly of all, a conversation with Chris himself led me to the idea of creating this blog.</p>
-<p><strong>Math union Programming</strong></p>
-<p><a class="reference external" href="https://jeremykun.com/">https://jeremykun.com/</a></p>
-<p>Written by Jeremy Kun, a math PhD turned software engineer, this blog covers a variety of mathematical topics (ie optimization, statistics, etc). What's interesting is that it is all done from a coder's perspective, focusing on intuition and programmatic examples rather than endless equations. His article on <a class="reference external" href="https://jeremykun.com/2017/06/05/formulating-the-support-vector-machine-optimization-problem/">support vector machines</a> is illustrative of this. Many of his posts has helped clarify several concepts from graduate level statistics courses I took at Yale.</p>
-<p><strong>Own your bits</strong></p>
-<p><a class="reference external" href="https://ownyourbits.com/">https://ownyourbits.com/</a></p>
-<p>Written by a hacker &quot;Narcho,&quot; this blog focuses on leveraging the raspberry pi as a home cloud storage solution. In other words, a DIY dropbox. A great DIY project that I did over the past winter break with a leftover portable hard drive.</p>
-<p>Narcho himself is an ardent advocate of understanding all technology used in daily life, particularly the hardware side. Obviously impractical to do for everything, but an admirable mindset to drive your curiosity.</p>
-<p><strong>John Myles White's Blog</strong></p>
-<p><a class="reference external" href="http://www.johnmyleswhite.com/">http://www.johnmyleswhite.com/</a></p>
-<p>Another blog attempting to explain statistical content in a colloquially understandable, but mathematically rigorous way. His optimization perspective on <a class="reference external" href="http://www.johnmyleswhite.com/notebook/2013/03/22/modes-medians-and-means-an-unifying-perspective/">mean, median, and mode</a> was eye-opening for me.</p>
-
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="http://alanzzhao.com/resources-and-inspiration-online.rst.html">posted at 09:34</a>
-                    &nbsp;&middot;&nbsp;<a href="http://alanzzhao.com/category/blog.html" rel="tag">Blog</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="http://alanzzhao.com/tag/learning.html" class="tags selected">learning</a>
-                    &nbsp;<a href="http://alanzzhao.com/tag/python.html" class="tags">python</a>
                 </div>
             </article>
 
